@@ -7,11 +7,13 @@ import Content from '../Content';
 import MainHeader from '../MainHeader';
 
 
-const Layout: React.FC = () => {
+const Layout: React.FC = ({ children }) => {
     return (
         <Grid>
             <MainHeader/>
-            <Content/>
+            <Content>
+                { children }
+            </Content>
             <Aside/>
         </Grid>
 
