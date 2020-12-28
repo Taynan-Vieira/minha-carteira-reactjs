@@ -1,6 +1,8 @@
 import React from 'react';
-import { Container }from './styles';
+import { Container, Content }from './styles';
 import ContentHeader from '../../components/ContentHeader';
+import HistoryFinanceCard from '../../components/HistoryFinanceCard';
+
 import SelectInput from '../../components/SelectInput';
 
 
@@ -13,9 +15,34 @@ const List: React.FC = () =>{
 
   return(
     <Container>
-      <ContentHeader title="List" lineColor="#fff">
+      <ContentHeader title="List" lineColor="#E44C4E">
         <SelectInput options={options}/>
       </ContentHeader>
+
+      <Content>
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#E44C4E"
+          title="Conta de luz"
+          subtitle="28/12/2020"
+          amount="R$ 99,99"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#E44C4E"
+          title="Conta de luz"
+          subtitle="28/12/2020"
+          amount="R$ 99,99"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#E44C4E"
+          title="Conta de luz"
+          subtitle="28/12/2020"
+          amount="R$ 99,99"
+        />
+        
+      </Content>
     </Container>
   )
 }
