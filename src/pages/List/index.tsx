@@ -21,90 +21,11 @@ const List: React.FC = () =>{
 
       <Content>
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#E44C4E"
           title="Conta de luz"
           subtitle="28/12/2020"
           amount="R$ 99,99"
         />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        <HistoryFinanceCard
-          cardColor="#313862"
-          tagColor="#E44C4E"
-          title="Conta de luz"
-          subtitle="28/12/2020"
-          amount="R$ 99,99"
-        />
-        
       </Content>
     </Container>
   )
