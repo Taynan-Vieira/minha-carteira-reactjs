@@ -1,13 +1,14 @@
 import React from 'react';
-import List from '../List/index';
 
 import { Container } from './styles';
+import ContentHeader from '../../components/ContentHeader';
 
 const Dashboard: React.FC = () =>{
 
   return(
-    <Container>
-      <List/>
+    <Container >
+      <ContentHeader title="Dashboard" lineColor="#F7931B">
+      </ContentHeader>
     </Container>
   )
 }
