@@ -27,10 +27,12 @@ interface IData{
   tagColor: string;
 }
 
-
-
 const List: React.FC<IRouteParams> = ({ match }) =>{
-  const[data, setData] = useState<IData[]>([]);  
+  const[data, setData] = useState<IData[]>([]);
+  const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1));
+  const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()));
+
+  
   const { type } = match.params;
 
   const titleProperties = useMemo(() => {
@@ -49,19 +51,29 @@ const List: React.FC<IRouteParams> = ({ match }) =>{
   },[type]);
 
   const months = [
-    {value: 7, label: 'Julho'},
-    {value: 8, label: 'Agosto'},
-    {value: 9, label: 'Setembro'},
+    {value: 1, label: 'Janeiro'},
+    {value: 2, label: 'Fevereiro'},
+    {value: 3, label: 'Março'},
   ];
   
   const years = [
+    {value: 2019, label: 2019},
     {value: 2020, label: 2020},
-    {value: 2019, label: 2018},
-    {value: 2018, label: 2018},
+    {value: 2021, label: 2021},
+
   ];
 
     useEffect(() => {
-     const response = listData.map(item => {
+     const filteredDate = listData.filter(item => {
+       const date = new Date(item.date);
+       const month = String(date.getMonth() + 1);
+       const year = String(date.getFullYear());
+
+       return month === monthSelected && year === yearSelected;
+     });
+
+     const formattedData = filteredDate.map(item => {
+
         return{
           id: String(Math.random () * data.length),
           description: item.description,
@@ -72,15 +84,15 @@ const List: React.FC<IRouteParams> = ({ match }) =>{
         }
       })
 
-      setData(response);
+      setData(formattedData);
       
-    },[]);
+    },[listData, monthSelected, yearSelected, data.length]);
 
   return(
     <Container>
       <ContentHeader title={titleProperties.title} lineColor={titleProperties.lineColor}>
-        <SelectInput options={months}/>
-        <SelectInput options={years}/>
+        <SelectInput options={months} onChange={(e) => setMonthSelected(e.target.value)} defaultValue={monthSelected}/>
+        <SelectInput options={years} onChange={(e) => setYearSelected(e.target.value)} defaultValue={yearSelected}/>
       </ContentHeader>
 
       <Filters>
@@ -101,7 +113,7 @@ const List: React.FC<IRouteParams> = ({ match }) =>{
         {
           data.map(item => (
             <HistoryFinanceCard
-            key={item.id}
+              key={item.id}
               tagColor={item.tagColor}
               title={item.description}
               subtitle={item.dataFormatted}
