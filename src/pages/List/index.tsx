@@ -2,13 +2,14 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { Container, Content, Filters }from './styles';
 import ContentHeader from '../../components/ContentHeader';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
+import { uuid } from 'uuidv4';
 
 import SelectInput from '../../components/SelectInput';
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
 import formatCurrency from '../../utils/formatCurrenty';
 import formatDate from '../../utils/formatDate';
-
+import monthsList from '../../utils/months';
 
 interface IRouteParams{
   match: {
@@ -50,18 +51,34 @@ const List: React.FC<IRouteParams> = ({ match }) =>{
     return type === 'entry-balance' ? gains : expenses;
   },[type]);
 
-  const months = [
-    {value: 1, label: 'Janeiro'},
-    {value: 2, label: 'Fevereiro'},
-    {value: 3, label: 'Março'},
-  ];
-  
-  const years = [
-    {value: 2019, label: 2019},
-    {value: 2020, label: 2020},
-    {value: 2021, label: 2021},
+  const months = useMemo(() => {
+    return monthsList.map((month, index) => {
+      return {
+        value: index + 1,
+        label: month,
+      }
+    });
+    }, []);
 
-  ];
+  const years = useMemo(() => {
+    let uniqueYears: number[] = [];
+
+    listData.forEach(item => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+
+      if(!uniqueYears.includes(year)){
+        uniqueYears.push(year);
+      }
+    });
+
+    return uniqueYears.map(year => {
+      return{
+        value: year,
+        label: year,
+      }
+    });
+  }, [listData]);
 
     useEffect(() => {
      const filteredDate = listData.filter(item => {
@@ -75,7 +92,7 @@ const List: React.FC<IRouteParams> = ({ match }) =>{
      const formattedData = filteredDate.map(item => {
 
         return{
-          id: String(Math.random () * data.length),
+          id: uuid(),
           description: item.description,
           amountFormatted: formatCurrency(Number(item.amount)),
           frequency: item.frequency,
