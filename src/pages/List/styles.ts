@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-export const Content = styled.div``;
+export const Content = styled.main``;
 
 export const Filters = styled.div`
   width: 100%;
+  margin-bottom: 30px;
+
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
 
   .tag-filter{
     font-size: 18px;
@@ -18,9 +19,9 @@ export const Filters = styled.div`
 
     margin: 0 10px;
 
-    transition: opacity .3s;
     opacity: .4;
 
+    transition: opacity .3s;
     &:hover{
       opacity: .7;
     }
